@@ -1,29 +1,22 @@
 package com.marlonflorencio.demo.redis.controller;
 
+import com.marlonflorencio.demo.redis.controller.request.RegisterUserRequest;
 import com.marlonflorencio.demo.redis.model.User;
 import com.marlonflorencio.demo.redis.service.UserService;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
 
-
-/**
- * Redis Sample Controller
- * @author debugrammer
- * @version 1.0
- * @since 2019-11-10
- */
 @RestController
-@RequestMapping({"/users"})
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
@@ -39,16 +32,13 @@ public class UserController {
     }
 
     @PostMapping()
-//    public ResponseEntity<?> registerUser(@RequestBody RegisterUserRequest request) throws IOException {
-    public ResponseEntity<?> registerUser() throws IOException {
-        User user = userService.register("Marlon");
+   public ResponseEntity<User> registerUser(@RequestBody RegisterUserRequest request) throws IOException {
+        User user = userService.register(request.getName());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @GetMapping({"{id}"})
-    public ResponseEntity<?> isUserBlocked(
-            @PathVariable("id") String id
-    ) throws ChangeSetPersister.NotFoundException {
+    @GetMapping("{id}")
+    public ResponseEntity<User> getUser(@PathVariable("id") String id)  {
 
         Optional<User> user = userService.getUser(id);
 
