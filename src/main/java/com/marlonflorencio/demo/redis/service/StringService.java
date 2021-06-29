@@ -25,14 +25,13 @@ public class StringService {
 
     public void execute() {
 
-        //serverCommands.flushAll();
+        serverCommands.flushAll();
 
         logger.info("====== String Operations ======");
 
         final ValueOperations<String, String> operations = this.stringTemplate.opsForValue();
 
-        operations.set(KEY_1, "ABC");
-//        operations.set(KEY_1, "ABC", Duration.ofMinutes(5));
+        operations.set(KEY_1, "ABC", Duration.ofMinutes(5));
 
         logger.info("Get={}", operations.get(KEY_1));
         logger.info("Type={}", this.stringTemplate.type(KEY_1));

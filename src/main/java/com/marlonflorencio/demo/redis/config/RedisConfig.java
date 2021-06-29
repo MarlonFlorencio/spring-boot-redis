@@ -2,12 +2,7 @@ package com.marlonflorencio.demo.redis.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
-import org.springframework.cache.Cache;
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.concurrent.ConcurrentMapCache;
-import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -22,7 +17,6 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.RedisSerializer;
 
 import java.time.Duration;
-import java.util.Collections;
 
 import static org.springframework.data.redis.cache.RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory;
 
@@ -72,22 +66,6 @@ public class RedisConfig {
         return redisConnectionFactory.getConnection().serverCommands();
     }
 
-//    @Bean
-//    public RedisCacheManager cacheManager(
-//            @Qualifier("redisConnectionFactory") RedisConnectionFactory redisConnectionFactory
-//    ) {
-//
-//        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
-//                .entryTtl(Duration.ofMinutes(10))
-//                .disableCachingNullValues();
-//
-//        return RedisCacheManager.builder(redisConnectionFactory)
-//                .cacheDefaults(config)
-//                .withInitialCacheConfigurations(singletonMap("predefined", config))
-//                .transactionAware()
-//                .build();
-//    }
-
     @Bean
     public RedisCacheManager redisCacheManager(
             @Qualifier("redisConnectionFactory") RedisConnectionFactory redisConnectionFactory
@@ -132,4 +110,5 @@ public class RedisConfig {
 //            .registerModule(new JavaTimeModule())
 //            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 //    }
+
 }
