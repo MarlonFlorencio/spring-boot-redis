@@ -91,24 +91,4 @@ public class RedisConfig {
         return template;
     }
 
-//    @Bean
-//    public RedisTemplate<String, byte[]> messagePackRedisTemplate(
-//            @Qualifier("redisConnectionFactory") RedisConnectionFactory redisConnectionFactory
-//    ) {
-//
-//        RedisTemplate<String, byte[]> template = new RedisTemplate<>();
-//        template.setConnectionFactory(redisConnectionFactory);
-//        template.setKeySerializer(new StringRedisSerializer());
-//        template.setEnableDefaultSerializer(false);
-//
-//        return template;
-//    }
-
-//    @Bean
-//    public ObjectMapper messagePackObjectMapper() {
-//        return new ObjectMapper(new MessagePackFactory())
-//            .registerModule(new JavaTimeModule())
-//            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-//    }
-
 }

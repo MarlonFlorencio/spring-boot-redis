@@ -2,7 +2,9 @@ package com.marlonflorencio.demo.redis.controller;
 
 import com.marlonflorencio.demo.redis.controller.request.RegisterUserRequest;
 import com.marlonflorencio.demo.redis.model.User;
-import com.marlonflorencio.demo.redis.service.UserService;
+import com.marlonflorencio.demo.redis.service.user.UserMsgPackService;
+import com.marlonflorencio.demo.redis.service.user.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +19,17 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
+@AllArgsConstructor
 public class UserController {
 
     private final UserService userService;
+    private final UserMsgPackService userMsgPackService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    @GetMapping("performance")
+    public ResponseEntity<?> peformance() {
+        userMsgPackService.peformance();
+        userService.peformance();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping()
@@ -33,7 +40,10 @@ public class UserController {
 
     @PostMapping()
    public ResponseEntity<User> registerUser(@RequestBody RegisterUserRequest request) throws IOException {
-        User user = userService.register(request.getName());
+        User user = userService.register(
+                request.getFirstName(),
+                request.getLastName()
+        );
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 

@@ -1,4 +1,4 @@
-package com.marlonflorencio.demo.redis.service;
+package com.marlonflorencio.demo.redis.service.operations;
 
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -9,6 +9,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.util.Properties;
 
 @Service
 @AllArgsConstructor

@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class RegisterUserRequest {
 
-    private String name;
+    private String firstName;
+
+    private String lastName;
 
 }

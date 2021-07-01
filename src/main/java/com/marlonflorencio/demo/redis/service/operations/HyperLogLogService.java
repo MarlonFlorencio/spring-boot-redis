@@ -1,4 +1,4 @@
-package com.marlonflorencio.demo.redis.service;
+package com.marlonflorencio.demo.redis.service.operations;
 
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
