@@ -16,18 +16,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class UserServiceIntegrationTest {
 
     private static final String FIRST_NAME = "firstName1";
-    private static final String LAST_NAME = "lastName1";
 
     @Autowired
     private UserService userService;
 
     @Test
     public void shouldSaveUser_toRedis() {
-        final User saved = this.userService.register(FIRST_NAME, LAST_NAME);
+        final User saved = this.userService.register(FIRST_NAME);
 
         assertTrue(isNotBlank(saved.getId()));
         assertEquals(FIRST_NAME, saved.getFirstName());
-        assertEquals(LAST_NAME, saved.getLastName());
         assertNotNull(saved.getCreatedAt());
     }
 }

@@ -1,15 +1,15 @@
 package com.marlonflorencio.demo.redis.controller;
 
-import com.marlonflorencio.demo.redis.service.BitmapService;
-import com.marlonflorencio.demo.redis.service.GeoHashService;
-import com.marlonflorencio.demo.redis.service.HashService;
-import com.marlonflorencio.demo.redis.service.HyperLogLogService;
-import com.marlonflorencio.demo.redis.service.ListService;
 import com.marlonflorencio.demo.redis.service.PipelineService;
-import com.marlonflorencio.demo.redis.service.SetService;
-import com.marlonflorencio.demo.redis.service.SortedSetService;
-import com.marlonflorencio.demo.redis.service.StringService;
 import com.marlonflorencio.demo.redis.service.TransactionService;
+import com.marlonflorencio.demo.redis.service.operations.BitmapService;
+import com.marlonflorencio.demo.redis.service.operations.GeoHashService;
+import com.marlonflorencio.demo.redis.service.operations.HashService;
+import com.marlonflorencio.demo.redis.service.operations.HyperLogLogService;
+import com.marlonflorencio.demo.redis.service.operations.ListService;
+import com.marlonflorencio.demo.redis.service.operations.SetService;
+import com.marlonflorencio.demo.redis.service.operations.SortedSetService;
+import com.marlonflorencio.demo.redis.service.operations.StringService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

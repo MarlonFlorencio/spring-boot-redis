@@ -41,8 +41,7 @@ public class UserController {
     @PostMapping()
    public ResponseEntity<User> registerUser(@RequestBody RegisterUserRequest request) throws IOException {
         User user = userService.register(
-                request.getFirstName(),
-                request.getLastName()
+                request.getFirstName()
         );
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

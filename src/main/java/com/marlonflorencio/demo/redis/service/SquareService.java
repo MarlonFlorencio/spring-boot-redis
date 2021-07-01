@@ -1,4 +1,4 @@
-package com.marlonflorencio.demo.redis.service.operations;
+package com.marlonflorencio.demo.redis.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

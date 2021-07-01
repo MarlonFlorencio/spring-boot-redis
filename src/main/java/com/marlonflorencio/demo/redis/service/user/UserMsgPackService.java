@@ -37,16 +37,14 @@ public class UserMsgPackService {
         this.serverCommands =  serverCommands;
     }
 
-    public User register(String firstName, String lastName) {
+    public User register(String firstName) {
 
         User user = User.builder()
                 .id(UUID.randomUUID().toString())
-                .firstName(firstName)
-                .lastName(lastName)
                 .createdAt(LocalDateTime.now())
                 .build();
 
-        operations.set(user.getId(), user);
+        operations.set(user.getId(), user, Duration.ofHours(1));
 
         return user;
     }
@@ -66,10 +64,9 @@ public class UserMsgPackService {
         Instant start = Instant.now();
 
         for (int i = 0; i < 20_000; i++) {
-            ids.add(register(
-                    UUID.randomUUID().toString(),
-                    UUID.randomUUID().toString()
-            ).getId());
+            ids.add(
+                    register(UUID.randomUUID().toString()).getId()
+            );
         }
 
         timeElapsed(start, "Add 20.000 items");

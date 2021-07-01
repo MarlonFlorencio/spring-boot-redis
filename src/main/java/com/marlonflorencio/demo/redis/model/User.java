@@ -8,11 +8,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Data
 @Builder
-@RedisHash("Student")
+@RedisHash(value = "Student", timeToLive = 3600)
 @AllArgsConstructor
 @NoArgsConstructor
 public class User implements Serializable {
@@ -21,8 +22,6 @@ public class User implements Serializable {
     private String id;
 
     private String firstName;
-
-    private String lastName;
 
     private LocalDateTime createdAt;
 

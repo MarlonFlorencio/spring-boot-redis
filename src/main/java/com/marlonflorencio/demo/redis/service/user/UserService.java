@@ -25,12 +25,11 @@ public class UserService {
     private final UserRepository userRepository;
     private final RedisServerCommands serverCommands;
 
-    public User register(String firstName, String lastName) {
+    public User register(String firstName) {
 
         User user = User.builder()
                 .id(UUID.randomUUID().toString())
                 .firstName(firstName)
-                .lastName(lastName)
                 .createdAt(LocalDateTime.now())
                 .build();
 
@@ -56,10 +55,9 @@ public class UserService {
         Instant start = Instant.now();
 
         for (int i = 0; i < 20_000; i++) {
-            ids.add(register(
-                    UUID.randomUUID().toString(),
-                    UUID.randomUUID().toString()
-            ).getId());
+            ids.add(
+                    register(UUID.randomUUID().toString()).getId()
+            );
         }
 
         timeElapsed(start, "Add 20.000 items");
